@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate Your Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="popup" aria-labelledby="popup-title">
+    <header class="popup-header">
+      <div>
+        <h1 id="popup-title">Rate your agent</h1>
+        <p class="subtitle">Quick post-run check · about 15 seconds</p>
+      </div>
+      <span id="sample-badge" class="sample-badge">Sample data</span>
+    </header>
+
+    <section id="run-summary" class="summary" aria-label="Task and result summary">
+      <h2 id="summary-heading">Example run <span class="sample-tag">(sample)</span></h2>
+      <dl>
+        <div>
+          <dt>Task</dt>
+          <dd id="summary-task">Draft a weekly status update from the sprint board</dd>
+        </div>
+        <div>
+          <dt>Result</dt>
+          <dd id="summary-result">Produced a 5-bullet summary with owners and dates</dd>
+        </div>
+        <div>
+          <dt>Model</dt>
+          <dd id="summary-model">Large model (sample)</dd>
+        </div>
+        <div>
+          <dt>Tools</dt>
+          <dd id="summary-tools">Documents, ticket search (sample)</dd>
+        </div>
+        <div>
+          <dt>Usage</dt>
+          <dd id="summary-usage">Tokens unavailable · 6 calls (sample)</dd>
+        </div>
+      </dl>
+      <details>
+        <summary>Show action and resources</summary>
+        <dl>
+          <div><dt>Action</dt><dd id="summary-action">Read sprint tickets and drafted the update (sample)</dd></div>
+          <div><dt>Context</dt><dd id="summary-context">Model and anonymized tool categories only (sample)</dd></div>
+          <div><dt>Resources</dt><dd id="summary-resources">Time and cost unavailable (sample)</dd></div>
+        </dl>
+      </details>
+    </section>
+
+    <section class="binary-block" aria-labelledby="binary-question">
+      <h2 id="binary-question">Did the agent finish the job and deliver the outcome you needed?</h2>
+      <div class="binary-row" role="group" aria-label="Did the agent finish the job?">
+        <button type="button" id="btn-yes" class="binary-btn" aria-pressed="false">Yes</button>
+        <button type="button" id="btn-no" class="binary-btn" aria-pressed="false">No</button>
+      </div>
+    </section>
+
+    <section id="reasons-block" class="reasons-block" hidden aria-labelledby="reasons-title">
+      <h2 id="reasons-title">What went wrong? <span class="hint-inline">Tap any that apply</span></h2>
+      <div class="chips" role="group" aria-label="Reasons the run did not finish">
+        <button type="button" class="chip" aria-pressed="false" data-reason="incomplete">Incomplete</button>
+        <button type="button" class="chip" aria-pressed="false" data-reason="missed_brief">Missed the brief</button>
+        <button type="button" class="chip" aria-pressed="false" data-reason="incorrect">Incorrect</button>
+        <button type="button" class="chip" aria-pressed="false" data-reason="missing_tool">Lacked a needed tool</button>
+      </div>
+    </section>
+
+    <section id="ratings-block" class="ratings-block" hidden aria-label="Star ratings">
+      <div class="rating-row" data-rating="overall">
+        <p id="label-overall">Run overall</p>
+        <div class="stars" role="radiogroup" aria-labelledby="label-overall">
+          <button type="button" aria-label="Rate run overall 1 out of 5 stars" aria-pressed="false" data-value="1">★</button>
+          <button type="button" aria-label="Rate run overall 2 out of 5 stars" aria-pressed="false" data-value="2">★</button>
+          <button type="button" aria-label="Rate run overall 3 out of 5 stars" aria-pressed="false" data-value="3">★</button>
+          <button type="button" aria-label="Rate run overall 4 out of 5 stars" aria-pressed="false" data-value="4">★</button>
+          <button type="button" aria-label="Rate run overall 5 out of 5 stars" aria-pressed="false" data-value="5">★</button>
+        </div>
+      </div>
+
+      <div class="rating-row" data-rating="quality">
+        <p id="label-quality">Quality</p>
+        <div class="stars" role="radiogroup" aria-labelledby="label-quality">
+          <button type="button" aria-label="Rate quality 1 out of 5 stars" aria-pressed="false" data-value="1">★</button>
+          <button type="button" aria-label="Rate quality 2 out of 5 stars" aria-pressed="false" data-value="2">★</button>
+          <button type="button" aria-label="Rate quality 3 out of 5 stars" aria-pressed="false" data-value="3">★</button>
+          <button type="button" aria-label="Rate quality 4 out of 5 stars" aria-pressed="false" data-value="4">★</button>
+          <button type="button" aria-label="Rate quality 5 out of 5 stars" aria-pressed="false" data-value="5">★</button>
+        </div>
+      </div>
+
+      <div class="rating-row" data-rating="speed">
+        <p id="label-speed">Speed</p>
+        <div class="stars" role="radiogroup" aria-labelledby="label-speed">
+          <button type="button" aria-label="Rate speed 1 out of 5 stars" aria-pressed="false" data-value="1">★</button>
+          <button type="button" aria-label="Rate speed 2 out of 5 stars" aria-pressed="false" data-value="2">★</button>
+          <button type="button" aria-label="Rate speed 3 out of 5 stars" aria-pressed="false" data-value="3">★</button>
+          <button type="button" aria-label="Rate speed 4 out of 5 stars" aria-pressed="false" data-value="4">★</button>
+          <button type="button" aria-label="Rate speed 5 out of 5 stars" aria-pressed="false" data-value="5">★</button>
+        </div>
+      </div>
+
+      <div class="rating-row" data-rating="resource_efficiency">
+        <p id="label-efficiency">Resource efficiency</p>
+        <div class="stars" role="radiogroup" aria-labelledby="label-efficiency">
+          <button type="button" aria-label="Rate resource efficiency 1 out of 5 stars" aria-pressed="false" data-value="1">★</button>
+          <button type="button" aria-label="Rate resource efficiency 2 out of 5 stars" aria-pressed="false" data-value="2">★</button>
+          <button type="button" aria-label="Rate resource efficiency 3 out of 5 stars" aria-pressed="false" data-value="3">★</button>
+          <button type="button" aria-label="Rate resource efficiency 4 out of 5 stars" aria-pressed="false" data-value="4">★</button>
+          <button type="button" aria-label="Rate resource efficiency 5 out of 5 stars" aria-pressed="false" data-value="5">★</button>
+        </div>
+      </div>
+      <p id="ratings-hint" class="hint" role="status">Select a star rating for each row to enable Submit.</p>
+    </section>
+
+    <div class="actions">
+      <button type="button" id="btn-submit" class="primary" disabled>Submit</button>
+      <button type="button" id="btn-skip" class="secondary">Skip</button>
+    </div>
+
+    <div id="confirmation" class="confirmation" role="status" aria-live="polite" hidden></div>
+
+    <footer class="privacy">
+      <p id="privacy-copy">Privacy: model and broad tool categories are captured automatically. Tool names, prompts, tool inputs or outputs, file paths, and document contents are not stored. Codex does not expose per-run token counts here, so tokens stay unavailable. Reviews remain on this computer.</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

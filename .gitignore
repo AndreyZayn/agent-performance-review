@@ -1,0 +1,7 @@
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+reviews.jsonl
+run-state.json
+run-state-*.json

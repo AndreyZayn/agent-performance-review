@@ -1,0 +1,30 @@
+{
+  "description": "Prototype reference for local Agent Performance Review hooks; not an active runtime configuration.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /path/to/agent-performance-review/capture_metadata_hook.py",
+            "timeout": 3,
+            "statusMessage": "Capturing broad tool categories locally"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /path/to/agent-performance-review/stop_hook.py",
+            "timeout": 3,
+            "statusMessage": "Preparing local review link"
+          }
+        ]
+      }
+    ]
+  }
+}
